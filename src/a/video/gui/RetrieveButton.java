@@ -16,15 +16,17 @@ import a.video.FrameInteractionAssociation;
 public class RetrieveButton extends JButton implements ActionListener{
 
 	public FrameInteractionAssociation frameInteractionAssociation;
-	public FrameLabel frameLabel;
+	public FrameLabel [] frameLabel;
 	public JComboBox<String> interactionComboBox;
 	public String[] frames;
 	
-	public RetrieveButton(String interactionFileName, JComboBox<String> interactionComboBox, FrameLabel frameLabel) throws FileNotFoundException, IOException, ParseException {
+	public RetrieveButton(FrameInteractionAssociation frameInteractionAssociation, 
+			JComboBox<String> interactionComboBox, 
+				FrameLabel [] frameLabel) throws FileNotFoundException, IOException, ParseException {
 		
 		addActionListener(this);
 		this.frameLabel = frameLabel;
-		this.frameInteractionAssociation = new FrameInteractionAssociation(interactionFileName);
+		this.frameInteractionAssociation = frameInteractionAssociation;
 		this.interactionComboBox = interactionComboBox;
 		
 	}
@@ -34,7 +36,9 @@ public class RetrieveButton extends JButton implements ActionListener{
 		String interaction = interactionComboBox.getSelectedItem().toString();
 		JSONObject iteractionObject = this.frameInteractionAssociation.retrieveInteraction(interaction);
 		frames = this.frameInteractionAssociation.retriveInteractionFrames(iteractionObject);
-		this.frameLabel.updateFrame(frames[1]);
+		this.frameLabel[0].updateFrame(frames[0]);
+		this.frameLabel[1].updateFrame(frames[1]);
+		this.frameLabel[2].updateFrame(frames[2]);
 	}
 
 	

@@ -172,16 +172,20 @@ public class WriteAnimatedGif {
     public static void main(String[] args) throws Exception {
 
     	System.out.println(args[0]);
+    	System.out.println(args[1]);
+    	System.out.println(args[2]);
         if (args.length != 3) {
             printUsage();
             System.exit(1);
         }
 
         // deal with the output file name
-        File f = new File(args[0]);
+        File f = new File("gif/animation.gif");
 
         // deal with the input file names
         String[] names = args[1].split(",");
+        
+        System.out.println(names.length);
         if (names.length < 2) {
             System.err.println("An animation requires 2 or more frames!");
             printUsage();
