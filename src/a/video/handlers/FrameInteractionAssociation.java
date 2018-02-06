@@ -1,4 +1,4 @@
-package a.video;
+package a.video.handlers;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,6 +9,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.sun.javafx.scene.paint.GradientUtils.Parser;
+
+import a.video.basics.Interaction;
 
 public class FrameInteractionAssociation 
 {

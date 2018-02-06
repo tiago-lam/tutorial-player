@@ -2,7 +2,7 @@ package a.video.gui;
 
 import javax.swing.JComboBox;
 
-import a.video.Interaction;
+import a.video.basics.Interaction;
 
 public class ComboBox<String> extends JComboBox
 {

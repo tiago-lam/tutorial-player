@@ -1,4 +1,4 @@
-package a.video.gui;
+package a.video.gui.main;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,14 +8,17 @@ import java.io.IOException;
 import javax.swing.JTextField;
 import org.json.simple.parser.ParseException;
 
-import a.video.FrameInteractionAssociation;
 import a.video.constants.InteractionsList;
+import a.video.gui.ComboBox;
+import a.video.gui.FrameLabel;
+import a.video.gui.RetrieveButton;
+import a.video.handlers.FrameInteractionAssociation;
 import a.video.utils.Utils;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
-public class VideoPlayer extends JFrame{
+public class ShowFrames extends JFrame{
 	
 	public FrameInteractionAssociation frameInteractionAssociation;
 	public FrameLabel [] frameLabel;
@@ -26,10 +29,10 @@ public class VideoPlayer extends JFrame{
 	private JLabel lblInteractionFrame;
 	private JLabel lblAfterInteraction;
 	
-	public VideoPlayer() throws FileNotFoundException, IOException, ParseException 
+	public ShowFrames() throws FileNotFoundException, IOException, ParseException 
 	{
 		getContentPane().setLayout(null);
-		setBounds(10,10,1080,720);
+		setBounds(10,10,1080,320);
 		interactionFileName = "interaction/interaction.json";
 		frameInteractionAssociation = new FrameInteractionAssociation(interactionFileName);
 		
@@ -106,6 +109,6 @@ public class VideoPlayer extends JFrame{
 	
 	public static void main(String [] args) throws FileNotFoundException, IOException, ParseException
 	{
-		VideoPlayer vp = new VideoPlayer();
+		ShowFrames vp = new ShowFrames();
 	}
 }

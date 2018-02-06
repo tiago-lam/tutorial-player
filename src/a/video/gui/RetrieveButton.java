@@ -8,7 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import a.video.FrameInteractionAssociation;
+
+import a.video.handlers.FrameInteractionAssociation;
 
 public class RetrieveButton extends JButton implements ActionListener{
 

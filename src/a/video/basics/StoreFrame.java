@@ -1,4 +1,4 @@
-package a.video;
+package a.video.basics;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

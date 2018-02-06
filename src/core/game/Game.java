@@ -24,9 +24,9 @@ import tools.pathfinder.PathFinder;
 
 import javax.swing.*;
 
-import a.video.Interaction;
-import a.video.StoreFrame;
-import a.video.StoreInteraction;
+import a.video.basics.Interaction;
+import a.video.basics.StoreFrame;
+import a.video.handlers.StoreInteraction;
 
 import java.awt.*;
 import java.io.File;

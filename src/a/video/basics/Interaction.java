@@ -1,4 +1,4 @@
-package a.video;
+package a.video.basics;
 
 public class Interaction {
 	
