@@ -5,14 +5,16 @@ public class Interaction {
 	public String interaction;
 	public String sprite1;
 	public String sprite2;
-	public int tick;
+	public String pairInteractionTick;
+	public String tick;
 	
-	public Interaction(int tick, String interaction, String sprite1, String sprite2)
+	public Interaction(String tick, String interaction, String sprite1, String sprite2)
 	{
 		this.interaction = interactionName(interaction);
 		this.sprite1 = sprite1;
 		this.sprite2 = sprite2;
 		this.tick = tick;
+		this.pairInteractionTick = tick + " - " + this.interaction;
 	}
 	
 	public static String interactionName(String interaction)

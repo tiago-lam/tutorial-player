@@ -22,6 +22,7 @@ public class StoreInteraction {
 		interactionObject.put("interaction", interaction.interaction);
 		interactionObject.put("sprite1", interaction.sprite1);
 		interactionObject.put("sprite2", interaction.sprite2);
+		interactionObject.put("pairInteractionTick", interaction.pairInteractionTick);
 		return interactionObject;
 	}
 	

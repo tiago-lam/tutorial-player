@@ -34,6 +34,25 @@ public class FrameInteractionAssociation
 		return null;
 	}
 	
+	public JSONObject retrieveInteraction(String interaction, String tick)
+	{	
+		int index = interaction.indexOf("-");
+		String stringTick = interaction.substring(0, index - 1);
+		String stringInteraction = interaction.substring(index + 1, interaction.length()); 
+		
+		for (int i = 0; i < interactionArray.size(); i++) 
+		{
+			JSONObject interactionObject = (JSONObject)interactionArray.get(i);
+			String interactionName = (String) interactionObject.get("interaction");
+			if(stringInteraction.contains(interactionName) && 
+					stringTick.equals(((String)interactionObject.get("tick"))))
+			{
+				return interactionObject;
+			}
+		}
+		return null;
+	}
+	
 	public String[] retriveInteractionFrames(JSONObject interactionObject)
 	{
 		int tick = Integer.parseInt(interactionObject.get("tick").toString());
@@ -52,6 +71,46 @@ public class FrameInteractionAssociation
 		JSONArray interactionArray = (JSONArray) parser.parse(new FileReader(interactionFileName));
 		
 		return interactionArray;
+	}
+	
+	public String [] retrieveAllInteractionNames()
+	{
+		String [] interactionNames = null;
+		try
+		{
+			interactionNames = new String[interactionArray.size()];
+			for (int i = 0; i < interactionArray.size(); i++) 
+			{
+				JSONObject interactionObject = (JSONObject)interactionArray.get(i);
+				interactionNames[i] = (String) interactionObject.get("pairInteractionTick");
+			}
+		}catch(NullPointerException e){
+			e.getMessage();
+		}
+		return interactionNames;
+	}
+	
+	public Interaction [] retrieveInteractionsAsArray()
+	{
+		Interaction [] interactionNames = null;
+		try
+		{
+			interactionNames = new Interaction[interactionArray.size()];
+			for (int i = 0; i < interactionArray.size(); i++) 
+			{
+				JSONObject interactionObject = (JSONObject)interactionArray.get(i);
+				Interaction interaction = 
+						new Interaction((String) interactionObject.get("tick"),
+								(String) interactionObject.get("sprite1"),
+								(String) interactionObject.get("sprite2"),
+								(String) interactionObject.get("interaction"));
+				
+				interactionNames[i] = interaction;
+			}
+		}catch(NullPointerException e){
+			e.getMessage();
+		}
+		return interactionNames;
 	}
 	
 }

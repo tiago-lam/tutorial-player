@@ -21,7 +21,10 @@ public class VideoPlayer extends JFrame{
 	public FrameLabel [] frameLabel;
 	public RetrieveButton retrieveButton;
 	public String interactionFileName;
-	public JComboBox comboBoxInteractions;
+	public ComboBox comboBoxInteractions;
+	private JLabel lblPreviousFrame;
+	private JLabel lblInteractionFrame;
+	private JLabel lblAfterInteraction;
 	
 	public VideoPlayer() throws FileNotFoundException, IOException, ParseException 
 	{
@@ -40,14 +43,14 @@ public class VideoPlayer extends JFrame{
 	public void startButtons() throws FileNotFoundException, IOException, ParseException
 	{
 		retrieveButton = new RetrieveButton(frameInteractionAssociation, comboBoxInteractions, frameLabel);
-		retrieveButton.setBounds(544, 6, 117, 29);
 		getContentPane().add(retrieveButton);
 	}
 	
 	public void startComboBoxes()
 	{
-		comboBoxInteractions = new JComboBox();
-		Utils.feedComboBox(comboBoxInteractions, InteractionsList.interactionList);
+		comboBoxInteractions = new ComboBox(frameInteractionAssociation.retrieveInteractionsAsArray());
+		String [] interactionNames = frameInteractionAssociation.retrieveAllInteractionNames();
+		Utils.feedComboBox(comboBoxInteractions, interactionNames);
 		comboBoxInteractions.setBounds(258, 7, 276, 27);
 		getContentPane().add(comboBoxInteractions);
 	}
@@ -58,14 +61,38 @@ public class VideoPlayer extends JFrame{
 		lblInteractionType.setBounds(141, 11, 139, 16);
 		getContentPane().add(lblInteractionType);
 		
-		startingFrameLabels();
+		startAuxiliaryLabels();
 		
+		startFrameLabels();
 	}
 
 	/**
 	 * 
 	 */
-	public void startingFrameLabels() {
+	public void startAuxiliaryLabels() {
+		{
+			lblPreviousFrame = new JLabel("Frame Before Interaction");
+			lblPreviousFrame.setBounds(108, 265, 153, 16);
+			getContentPane().add(lblPreviousFrame);
+		}
+		
+		{
+			lblInteractionFrame = new JLabel("Interaction Frame");
+			lblInteractionFrame.setBounds(419, 265, 110, 16);
+			getContentPane().add(lblInteractionFrame);
+		}
+		
+		{
+			lblAfterInteraction = new JLabel("Frame After Interaction");
+			lblAfterInteraction.setBounds(710, 265, 153, 16);
+			getContentPane().add(lblAfterInteraction);
+		}
+	}
+
+	/**
+	 * 
+	 */
+	public void startFrameLabels() {
 		frameLabel = new FrameLabel[3];
 		
 		frameLabel[0] = new FrameLabel(27, 47, 300, 200);

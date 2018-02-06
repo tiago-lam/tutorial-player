@@ -1606,7 +1606,7 @@ public abstract class Game {
 		
 		if(s1 != null && s2 != null)
 		{
-			Interaction interaction = new Interaction(this.gameTick, 
+			Interaction interaction = new Interaction(String.valueOf(this.gameTick), 
 					ef.getClass().getName(), 
 					s1.name, 
 					s2.name);
