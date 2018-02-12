@@ -7,16 +7,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.JTextField;
 import org.json.simple.parser.ParseException;
-
 import a.video.constants.InteractionsList;
-import a.video.gui.ComboBox;
-import a.video.gui.FrameLabel;
-import a.video.gui.RetrieveButton;
+import a.video.gui.elements.ComboBox;
+import a.video.gui.elements.FrameLabel;
+import a.video.gui.elements.RetrieveButton;
+import a.video.gui.elements.ShowVideoPlayerButton;
 import a.video.handlers.FrameInteractionAssociation;
 import a.video.utils.Utils;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ShowFrames extends JFrame{
 	
@@ -28,6 +30,7 @@ public class ShowFrames extends JFrame{
 	private JLabel lblPreviousFrame;
 	private JLabel lblInteractionFrame;
 	private JLabel lblAfterInteraction;
+	private ShowVideoPlayerButton showVideoPlayerButton;
 	
 	public ShowFrames() throws FileNotFoundException, IOException, ParseException 
 	{
@@ -47,6 +50,26 @@ public class ShowFrames extends JFrame{
 	{
 		retrieveButton = new RetrieveButton(frameInteractionAssociation, comboBoxInteractions, frameLabel);
 		getContentPane().add(retrieveButton);
+		startShowVideoPlayerButton();
+	}
+
+	/**
+	 * 
+	 */
+	public void startShowVideoPlayerButton() {
+		{
+			String [] frames = new String[]
+					{
+							frameLabel[0].getThisStringFrame(),
+							frameLabel[1].getThisStringFrame(),
+							frameLabel[2].getThisStringFrame()
+					};
+			showVideoPlayerButton = new ShowVideoPlayerButton(frames, 1000);
+			showVideoPlayerButton.setBounds(974, 122, 100, 50);
+			showVideoPlayerButton.setName("V");
+			
+			getContentPane().add(showVideoPlayerButton);
+		}
 	}
 	
 	public void startComboBoxes()
@@ -73,6 +96,7 @@ public class ShowFrames extends JFrame{
 	 * 
 	 */
 	public void startAuxiliaryLabels() {
+		
 		{
 			lblPreviousFrame = new JLabel("Frame Before Interaction");
 			lblPreviousFrame.setBounds(108, 265, 153, 16);

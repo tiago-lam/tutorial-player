@@ -1,4 +1,4 @@
-package a.video.gui;
+package a.video.gui.elements;
 
 import javax.swing.JComboBox;
 

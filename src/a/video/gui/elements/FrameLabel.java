@@ -1,4 +1,4 @@
-package a.video.gui;
+package a.video.gui.elements;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -10,9 +10,13 @@ import javax.swing.JLabel;
 
 public class FrameLabel extends JLabel
 {
+	
+	private String thisStringFrame;
+	
 	public FrameLabel() {
 		super();
 		setBounds(27, 47, 300, 200);
+		setThisStringFrame("");
 	}
 	
 	public FrameLabel(int anchorX, int anchorY, int width, int height)
@@ -28,6 +32,7 @@ public class FrameLabel extends JLabel
 		ImageIcon imgThisImg = new ImageIcon(
 				img.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
 		this.setIcon(imgThisImg);
+		setThisStringFrame(frame);
 	}
 
 	/**
@@ -42,6 +47,14 @@ public class FrameLabel extends JLabel
 		    e.printStackTrace();
 		}
 		return img;
+	}
+
+	public String getThisStringFrame() {
+		return thisStringFrame;
+	}
+
+	public void setThisStringFrame(String thisFrame) {
+		this.thisStringFrame = thisFrame;
 	}
 	
 }

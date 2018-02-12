@@ -1,4 +1,4 @@
-package a.video.gui;
+package a.video.gui.elements;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
