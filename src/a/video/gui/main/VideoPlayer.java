@@ -23,19 +23,29 @@ public class VideoPlayer extends JFrame
 	
 	public VideoPlayer(String [] frames, int delayTime)
 	{
-		setBounds(0, 0, 444, 270);
+		setBounds(0, 0, 455, 330);
+		this.frames = frames;
+		this.delayTime = delayTime;
 		getContentPane().setLayout(null);
 		frameToShow = new FrameLabel(6, 6, 438, 266);
+		if(!checkNulity())
+			frameToShow.updateFrame(frames[0]);
 		getContentPane().add(frameToShow);
 		
-		this.playVideoButton = new PlayVideoButton(frames, frameToShow, delayTime);
-		this.playVideoButton.setBounds(165, 281, 117, 29);
+		playVideoButton = new PlayVideoButton(this.frames, frameToShow, this.delayTime);
+		playVideoButton.setBounds(165, 281, 117, 29);
+		getContentPane().add(playVideoButton);
 		
 		setVisible(true);	
 	}
 	
-	public static void main(String [] args)
+	public boolean checkNulity()
 	{
+		for (int i = 0; i < frames.length; i++) {
+			if(frames[i] == null)
+				return true;
+		}
 		
+		return false;
 	}
 }

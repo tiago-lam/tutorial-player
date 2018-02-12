@@ -20,6 +20,12 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Code written by Tiago Machado (tiago.machado@nyu.edu)
+ * Date: 12/02/2018
+ * @author Tiago Machado
+ */
+
 public class ShowFrames extends JFrame{
 	
 	public FrameInteractionAssociation frameInteractionAssociation;
@@ -48,9 +54,13 @@ public class ShowFrames extends JFrame{
 	
 	public void startButtons() throws FileNotFoundException, IOException, ParseException
 	{
-		retrieveButton = new RetrieveButton(frameInteractionAssociation, comboBoxInteractions, frameLabel);
-		getContentPane().add(retrieveButton);
 		startShowVideoPlayerButton();
+		retrieveButton = 
+				new RetrieveButton(frameInteractionAssociation, 
+						comboBoxInteractions, 
+						frameLabel, 
+						showVideoPlayerButton);
+		getContentPane().add(retrieveButton);
 	}
 
 	/**
@@ -58,16 +68,9 @@ public class ShowFrames extends JFrame{
 	 */
 	public void startShowVideoPlayerButton() {
 		{
-			String [] frames = new String[]
-					{
-							frameLabel[0].getThisStringFrame(),
-							frameLabel[1].getThisStringFrame(),
-							frameLabel[2].getThisStringFrame()
-					};
-			showVideoPlayerButton = new ShowVideoPlayerButton(frames, 1000);
+			showVideoPlayerButton = new ShowVideoPlayerButton(null, 100);
 			showVideoPlayerButton.setBounds(974, 122, 100, 50);
-			showVideoPlayerButton.setName("V");
-			
+			showVideoPlayerButton.setVisible(false);
 			getContentPane().add(showVideoPlayerButton);
 		}
 	}

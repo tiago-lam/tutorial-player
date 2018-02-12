@@ -7,6 +7,12 @@ import javax.swing.JButton;
 
 import a.video.gui.main.VideoPlayer;
 
+/**
+ * Code written by Tiago Machado (tiago.machado@nyu.edu)
+ * Date: 12/02/2018
+ * @author Tiago Machado
+ */
+
 public class ShowVideoPlayerButton extends JButton implements ActionListener
 {
 	public String [] frames;
@@ -22,6 +28,16 @@ public class ShowVideoPlayerButton extends JButton implements ActionListener
 	public ShowVideoPlayerButton() {
 		addActionListener(this);
 		setText("Video");
+	}
+	
+	public void updateStringFrames(String [] frames)
+	{
+		this.frames = frames;
+	}
+	
+	public void updateDelayTime(int delayTime)
+	{
+		this.delayTime = delayTime;
 	}
 
 	@Override

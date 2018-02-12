@@ -8,9 +8,14 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+/**
+ * Code written by Tiago Machado (tiago.machado@nyu.edu)
+ * Date: 12/02/2018
+ * @author Tiago Machado
+ */
+
 public class FrameLabel extends JLabel
 {
-	
 	private String thisStringFrame;
 	
 	public FrameLabel() {

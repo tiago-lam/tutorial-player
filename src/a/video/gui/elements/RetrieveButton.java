@@ -17,16 +17,19 @@ public class RetrieveButton extends JButton implements ActionListener{
 	public FrameLabel [] frameLabel;
 	public ComboBox interactionComboBox;
 	public String[] frames;
+	private ShowVideoPlayerButton showVideoPlayerButton;
 	
 	public RetrieveButton(FrameInteractionAssociation frameInteractionAssociation, 
 			ComboBox interactionComboBox, 
-				FrameLabel [] frameLabel) throws FileNotFoundException, IOException, ParseException {
+				FrameLabel [] frameLabel,
+					ShowVideoPlayerButton showVideoPlayerButton) throws FileNotFoundException, IOException, ParseException {
 		super("Retrieve Frames");
 		setBounds(544, 6, 130, 29);
 		addActionListener(this);
 		this.frameLabel = frameLabel;
 		this.frameInteractionAssociation = frameInteractionAssociation;
 		this.interactionComboBox = interactionComboBox;
+		this.showVideoPlayerButton = showVideoPlayerButton;
 		
 	}
 	@Override
@@ -46,6 +49,16 @@ public class RetrieveButton extends JButton implements ActionListener{
 		this.frameLabel[0].updateFrame(frames[0]);
 		this.frameLabel[1].updateFrame(frames[1]);
 		this.frameLabel[2].updateFrame(frames[2]);
+		
+		showVideoPlayerButton.updateStringFrames(getStringFrames());
+		showVideoPlayerButton.setVisible(true);
+	}
+	
+	public String [] getStringFrames()
+	{
+		return new String[]{this.frameLabel[0].getThisStringFrame(),
+							this.frameLabel[1].getThisStringFrame(),
+							this.frameLabel[2].getThisStringFrame()};
 	}
 
 }
