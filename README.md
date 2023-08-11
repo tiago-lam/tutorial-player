@@ -1,6 +1,6 @@
 # tutorial-player
 
-This project is a video platform to create tutorials for GVGAI/VGDL games named Teetsher 
+This project is a video platform to create tutorials for GVGAI/VGDL games 
 
 gvgai
 =====
